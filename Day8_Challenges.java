@@ -1,21 +1,43 @@
-public class carbo {
-        int noOfWheels;
-        String company;
-        String modelNumber;
-        int maxSpeed;
-        int noOfDoors;
-
-    public carbo(int maxSpeed ,int noOfWheels, String company , String modelNumber, int noOfDoors ) {
-        this.maxSpeed = maxSpeed;
-        this.company=company;
-        this.modelNumber=modelNumber;
-        this.noOfWheels=noOfWheels;
-        this.noOfDoors=noOfDoors;
-
+public class car {
+//instance variables
+    int noOfWheels;
+    String colour;
+    float maxSpeed;
+    float currentFuelInLitres;
+//    default constructor
+    car(){
+        noOfWheels=4;
+        colour="blue";
+        maxSpeed=160;
+    }
+//    parametrized constructor
+    car(String colour){
+        noOfWheels=5;
+        maxSpeed=90;
     }
 
+
+//methods
+    public car start(){
+        System.out.println("car is starting.....");
+        return this;
+    }
+    public void drive(){
+        System.out.println("car is driving..");
+        currentFuelInLitres--;
+    }
+public void addFuel( float fuel){
+        currentFuelInLitres+=fuel;
+}
+public float getCurrentFuelLevel(){
+        return currentFuelInLitres;
+}
+
     public static void main(String[] args) {
-        carbo yaho=new carbo(120, 4, "MARUTI", "SWE345", 4);
-        System.out.println(yaho.toString());
+        car Mycar=new car(); // default constructor call
+        car thar=new car("red"); // parametrized constructor call
+        Mycar.addFuel(7);
+        Mycar.start().drive();  //chaining because of this keyword!
+        System.out.println(Mycar.getCurrentFuelLevel());
     }
 }
